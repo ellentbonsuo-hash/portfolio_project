@@ -114,38 +114,36 @@
 <section id="timeline" class="timeline-wrap">
   <div class="container">
 
-    <!-- Tabs (CSS-only radios) -->
-   <div class="tabs">
-  <input type="radio" name="tab" id="tab-exp" checked>
-  <label for="tab-exp">My Experiences</label>
+    <!-- 1) Hidden radios (must come BEFORE .tl and be siblings) -->
+    <input type="radio" name="tab" id="tab-exp" class="tab-radio" checked>
+    <input type="radio" name="tab" id="tab-edu" class="tab-radio">
 
-  <input type="radio" name="tab" id="tab-edu">
-  <label for="tab-edu">My Education</label>
-</div>
+    <!-- 2) Visible tab buttons -->
+    <div class="tabs" role="tablist" aria-label="Experience / Education Tabs">
+      <label for="tab-exp" role="tab" aria-controls="panel-exp">My Experiences</label>
+      <label for="tab-edu" role="tab" aria-controls="panel-edu">My Education</label>
+    </div>
 
-<div class="tl">
-  <div class="tl__line"></div>
-  <div class="tl__panel" data-panel="exp">
-    <!-- timeline items go here -->
-  </div>
-  <div class="tl__panel" data-panel="edu">
-    <!-- timeline items go here -->
-  </div>
-</div>
+    <!-- 3) Timeline container -->
+    <div class="tl">
+      <div class="tl__line" aria-hidden="true"></div>
 
-        <!-- Amnesty International Ghana -->
+      <!-- ========== EXPERIENCE PANEL ========== -->
+      <div class="tl__panel" id="panel-exp" data-panel="exp">
         <article class="tl__item">
           <div class="tl__date">January 2025 – July 2025</div>
           <div class="tl__dot"></div>
           <div class="tl__content">
             <h3 class="tl__org">Amnesty International Ghana</h3>
-            <div class="tl__role">Campaigns & Communications Assistant </div>
+            <div class="tl__role">Campaigns & Communications Assistant</div>
             <div class="tl__loc">Accra, Ghana</div>
-            <p class="tl__desc">Supported meetings & campaigns mainly Graphics Design Videograpghy and Photography, managed documents, drafted content, and assisted finance checks.</p>
+            <p class="tl__desc">
+              Supported meetings & campaigns; graphics, videography/photography; managed documents,
+              drafted content, and assisted finance checks.
+            </p>
           </div>
         </article>
 
-        <!-- Ghana International School -->
         <article class="tl__item">
           <div class="tl__date">Oct 2023 – Sep 2024</div>
           <div class="tl__dot"></div>
@@ -153,11 +151,10 @@
             <h3 class="tl__org">Ghana International School — Board Office of Strategy Execution</h3>
             <div class="tl__role">Executive Assistant to the CEO</div>
             <div class="tl__loc">Accra, Ghana</div>
-            <p class="tl__desc">Coordinated schedules, handled high-level correspondence, vendor follow-ups, and light IT/design support.</p>
+            <p class="tl__desc">Coordinated schedules, high-level correspondence, vendor follow-ups, and light IT/design support.</p>
           </div>
         </article>
 
-        <!-- NUGS -->
         <article class="tl__item">
           <div class="tl__date">Nov 2022 – Oct 2023</div>
           <div class="tl__dot"></div>
@@ -165,53 +162,18 @@
             <h3 class="tl__org">National Union of Ghana Students (NUGS)</h3>
             <div class="tl__role">Administrative Assistant to the President/CEO</div>
             <div class="tl__loc">Accra, Ghana</div>
-            <p class="tl__desc">Visitor management, events & proposals, Project Management, stakeholder engagement, and tech support.</p>
+            <p class="tl__desc">Visitor management, events & proposals, project management, stakeholder engagement, and tech support.</p>
           </div>
         </article>
+      </div><!-- /panel-exp -->
 
-        <!-- Cambridge Training -->
-        <!-- <article class="tl__item">
-          <div class="tl__date">August 2025 - Present</div>
-          <div class="tl__dot"></div>
-          <div class="tl__content">
-            <h3 class="tl__org">Zeno's Foundation</h3>
-            <div class="tl__role">Programmes Director</div>
-            <div class="tl__loc">Accra, Ghana</div>
-            <p class="tl__desc">Leading strategic and operational execution of programmes supporting children with 
-              cerebral palsy and special needs. Oversee partnerships, advocacy, fundraising, volunteer coordination, 
-              and programme expansion while ensuring long-term sustainability.</p>
-          </div>
-        </article> -->
-
-        <!-- Leadership roles -->
-        <!-- <article class="tl__item">
-          <div class="tl__date">2022 – 2023</div>
-          <div class="tl__dot"></div>
-          <div class="tl__content">
-            <h3 class="tl__org">USAG</h3>
-            <div class="tl__role">Digital & IT Solutions Officer</div>
-            <p class="tl__desc">Led national advocacy campaigns (e.g., End Period Poverty, 16 Days of Activism) with key partners.</p>
-          </div> -->
-        </article>
-
-        <!-- <article class="tl__item">
-          <div class="tl__date">2021</div>
-          <div class="tl__dot"></div>
-          <div class="tl__content">
-            <h3 class="tl__org">Kwegyir Aggrey Hall — UEW</h3>
-            <div class="tl__role">President</div>
-            <p class="tl__desc">Organized major university events and published the hall’s maiden magazine.</p>
-          </div>
-        </article>
-      </div> -->
-
-      <!-- ========== EDUCATION ========== -->
-      <div class="tl__panel" data-panel="edu">
+      <!-- ========== EDUCATION PANEL ========== -->
+      <div class="tl__panel" id="panel-edu" data-panel="edu">
         <article class="tl__item">
           <div class="tl__date">2024 – Present</div>
           <div class="tl__dot"></div>
           <div class="tl__content">
-            <h3 class="tl__org">GIMPA — School of Law</h3>
+            <h3 class="tl__org">Ghana Institute of Management and Public Administration</h3>
             <div class="tl__role">Bachelor of Laws (LLB), Evening</div>
             <div class="tl__loc">Accra, Ghana</div>
           </div>
@@ -226,19 +188,15 @@
           </div>
         </article>
 
-        <article class="tl__item">
+        <!-- <article class="tl__item">
           <div class="tl__date">2014 – 2017</div>
           <div class="tl__dot"></div>
           <div class="tl__content">
             <h3 class="tl__org">Dwamena Akenten Senior High School</h3>
             <div class="tl__role">WASSCE — General Arts</div>
           </div>
-        </article>
-      </div>
-    </div>
-  </div>
+        </article> -->
+      </div><!-- /panel-edu -->
+    </div><!-- /.tl -->
+  </div><!-- /.container -->
 </section>
-
-  <main style="height:80vh"></main> <!-- just to give us scroll space -->
-</body>
-</html>

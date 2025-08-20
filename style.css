@@ -270,9 +270,13 @@ body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial
   background:rgba(255,255,255,.25); transform:translateX(-50%);
   border-radius:2px;
 }
+
+/* Hide all panels by default */
 .tl__panel{ display:none; }
-#tab-exp:checked ~ .tl [data-panel="exp"]{ display:block; }
-#tab-edu:checked ~ .tl [data-panel="edu"]{ display:block; }
+
+/* ✅ Show correct panel depending on checked tab */
+#tab-exp:checked ~ .tl [data-panel="exp"] { display:block; }
+#tab-edu:checked ~ .tl [data-panel="edu"] { display:block; }
 
 /* Items */
 .tl__item{
@@ -299,6 +303,79 @@ body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial
 @media (max-width: 760px){
   .tl__item{ grid-template-columns: 1fr; }
   .tl__date{ text-align:left; }
-  .tl__line{ left:18px; transform:none; }      /* optional: keep center if you prefer */
+  .tl__line{ left:18px; transform:none; }
   .tl__dot{ margin-left:9px; }
+}
+/* === 1) Define column sizes so the line can align to dots === */
+.tl{
+  /* LEFT (date) | MIDDLE (dot) | RIGHT (card) */
+  --date-col: 240px;      /* width of date column (adjust to taste) */
+  --dot-col: 16px;        /* width of the dot column */
+  --gap: 18px;            /* gap between columns */
+
+  position: relative;
+  width: min(900px, 92%);
+  margin: 0 auto;
+}
+
+/* Use the same variables for each item’s 3-column grid */
+.tl__item{
+  display: grid;
+  grid-template-columns: var(--date-col) var(--dot-col) minmax(320px, 1fr);
+  gap: var(--gap);
+  align-items: flex-start;
+  margin: 36px 0;
+}
+
+/* === 2) Place the vertical line in the MIDDLE of the dot column === */
+.tl__line{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: rgba(255,255,255,.25);
+  border-radius: 2px;
+
+  /* left edge of .tl + date col + gap + half of dot col */
+  left: calc(var(--date-col) + var(--gap) + (var(--dot-col) / 2));
+  transform: translateX(-50%); /* center the 3px line on that position */
+}
+
+/* Dot itself stays centered in its 16px column */
+.tl__dot{
+  width: 12px; height: 12px; border-radius: 50%;
+  background: #fff; box-shadow: 0 0 0 4px rgba(255,255,255,.18);
+  margin: 6px auto 0; /* auto centers the dot in the dot column */
+}
+
+/* === 3) Mobile: stack to one column; move/hide line if you prefer === */
+@media (max-width: 760px){
+  .tl__item{ grid-template-columns: 1fr; }
+  .tl__date{ text-align: left; }
+  /* Option A: hide the line on small screens */
+  .tl__line{ display: none; }
+  /* Option B (instead of hiding): move it to the left edge
+     .tl__line{ left: 18px; transform:none; display:block; }
+     .tl__dot{ margin-left: 9px; }
+  */
+}
+/* Base style for the tab labels */
+.tabs label {
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 6px;
+  background: #222;       /* inactive background */
+  color: #aaa;            /* inactive text color */
+  font-weight: bold;
+  transition: all 0.3s ease;
+  margin-right: 6px;
+  display: inline-block;
+}
+
+/* When radio is checked → style the corresponding label */
+#tab-exp:checked ~ .tabs label[for="tab-exp"],
+#tab-edu:checked ~ .tabs label[for="tab-edu"] {
+  background: #fff;       /* highlight background */
+  color: #000;            /* active text color */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
