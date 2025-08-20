@@ -1,0 +1,304 @@
+/* 1) defaults */
+* { box-sizing: border-box; }
+body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+
+/* 2) theme colors */
+:root{
+  --grad-start:#0b0b0c;   /* black */
+  --grad-mid:#121213;     /* dark gray */
+  --grad-end:#14b8a6;     /* teal accent */
+  --text:#ffffff;
+}
+/* the bar itself */
+.topbar{
+  position: sticky; top: 0; z-index: 1000;     /* stays at the top */
+  color: var(--text);
+  background: linear-gradient(90deg, var(--grad-start), var(--grad-mid), var(--grad-end));
+  border-bottom: 1px solid rgba(255,255,255,.12);
+}
+
+/* inner layout (brand left, menu right) */
+.topbar__inner{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.brand{
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 800;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+.menu{
+  list-style: none;
+  display: flex;
+  gap: 38px;
+  margin: 0;
+  padding: 0;
+}
+.menu a{
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  font-size: 14px;
+  opacity: .9;
+  transition: opacity .15s ease, transform .15s ease;
+}
+.menu a:hover{
+  opacity: 1;
+  transform: translateY(-1px);
+}
+/* ===== Intro Card Section ===== */
+
+/* Background behind the card (subtle header-like gradient) */
+.intro-wrap{
+  background: linear-gradient(90deg, var(--grad-start,#0b0b0c), 
+  var(--grad-mid,#121213), var(--grad-end,#14b8a6));
+  padding: 48px 0;             /* top/bottom breathing room */
+}
+
+/* The white card that floats above the gradient ( the box )*/
+.intro-card{
+  width:min(1200px, 92%);
+  margin: 0 auto;
+  background:#ffffff;
+  color:#0f1115;
+  border-radius: 16px;
+  box-shadow: 0 24px 60px rgba(0,0,0,.18);
+  padding: 28px;
+  height: auto;
+}
+
+/* Two columns: photo (left) and text (right) */
+.intro-grid{
+  display:grid;
+  grid-template-columns: 0.7fr 1.4fr;
+  gap: 28px;
+  align-items: center;
+}
+
+/* Photo frame */
+.intro-photo{
+  margin:0;
+  border-radius: 12px;
+  overflow:hidden;
+  border: 8px solid #f3f5f8;              /* white-ish frame */
+  box-shadow: 0 16px 40px rgba(0,0,0,.12);
+}
+.intro-photo img{
+  width:100%; height:auto; display:block;
+  object-fit:cover;
+  border-radius: 8px;
+}
+
+/* Text styles */
+.eyebrow{
+  margin:0 0 8px; letter-spacing:.18em; text-transform:uppercase;
+  font-size:12px; color:#7b8190; font-weight:800;
+}
+.intro-name{
+  margin:0 0 6px; font-size:clamp(18px, 4vw, 40px); line-height:1.15;
+  font-weight:800; letter-spacing:.02em; color:#0d1117;
+}
+.intro-role{
+  margin:0 0 14px; font-weight:700; font-size:11px; letter-spacing:.12em;
+  color:#0d1117; text-transform:uppercase;
+  line-height: 1.4; font-style:italic; /* italic for emphasis */
+}
+.intro-lead{
+  color:#4b5160; margin:0 0 18px; line-height:1.7;
+}
+
+/* Details list (icons + text) */
+.info-list{
+  list-style:none; padding:0; margin:0 0 16px; color:#394150;
+}
+.info-list li{ padding:6px 0; }
+
+/* Social buttons (simple, minimal) */
+.socials{ display:flex; gap:10px; }
+.socials a{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:34px; height:34px; border-radius:8px;
+  background:#eef1f5; color:#0f1115; font-weight:800; text-decoration:none;
+  border:1px solid #e5e8ee;
+  transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+}
+.socials a:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(0,0,0,.12);
+  background:#e9f7f5;                /* light teal tint on hover */
+}
+
+/* Responsive: stack on small screens */
+@media (max-width: 920px){
+  .intro-grid{ grid-template-columns: 1fr; }
+}
+/* ===== Section shell & utilities ===== */
+.container{ width:min(1100px, 92%); margin-inline:auto; } 
+/* if you don’t already have one */
+
+.about{
+  background:#0c0d10;                 /* very dark background */
+  color:#e9e9ee;                       /* light text */
+  padding: 56px 0;
+}
+
+.section-eyebrow{
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  font-size:12px;
+  color:#9aa0a6;                       /* muted gray */
+  margin:0 0 6px;
+}
+
+.section-title{
+  margin:0 0 14px;
+  font-size:clamp(22px, 3.6vw, 28px);
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:#ffffff;
+}
+
+.about-lead{
+  color:#cfd3d8;
+  line-height:1.8;
+  margin: 0 0 10px;
+}
+
+.about-text{
+  color:#aab0b7;
+  line-height:1.8;
+  margin: 0 0 26px;
+}
+
+/* ===== Features grid ===== */
+.features{
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.feature{
+  background: #0f1115;                                 /* dark card */
+  border: 1px solid #1f2023;                           /* subtle border */
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 14px 36px rgba(0,0,0,.28);
+  position: relative;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+/* thin colored line at bottom (like screenshot) */
+/* .feature::after{
+  content:"";
+  position:absolute; left:0; right:0; bottom:0; height:4px;
+  background: linear-gradient(90deg, #000000, #555555, #14b8a6);  purple→pink→teal 
+  border-bottom-left-radius:14px; border-bottom-right-radius:14px;
+} */
+.feature::after{
+  content:"";
+  position:absolute;
+  left:0; right:0; bottom:0;
+  height:4px;
+  background: linear-gradient(90deg, #14b8a6, #555555, #000000); /* black → gray → black */
+  border-bottom-left-radius:14px;
+  border-bottom-right-radius:14px;
+}
+/* this is what makes the icon looks like its highlighting and clickables */
+.feature:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 22px 48px rgba(0,0,0,.38);
+}
+
+.feature__icon{
+  width:44px; height:44px;
+  display:inline-flex; align-items:center; justify-content:center;
+  border-radius:10px;
+  background: #12141a;                 /* icon tile */
+  border:1px solid #23252b;
+  margin-bottom:12px;
+  font-size:22px;                      /* emoji size */
+}
+
+.feature__title{
+  margin:0;
+  font-size:16px;
+  color:#eaeaf0;
+}
+
+/* Responsive */
+@media (max-width: 980px){
+  .features{ grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px){
+  .features{ grid-template-columns: 1fr; }
+
+}
+/* ===== Timeline Section ===== */
+.timeline-wrap{
+  background: linear-gradient(90deg, var(--grad-start,#0b0b0c), var(--grad-mid,#121213), var(--grad-end,#14b8a6));
+  padding: 56px 0 72px;
+  color:#eaf2f5;
+}
+
+/* Tabs */
+.tabs{ display:flex; gap:10px; justify-content:center; margin-bottom:32px; }
+.tabs input{ display:none; }
+.tabs label{
+  background: rgba(255,255,255,.18);
+  color:#fff; font-size:14px; font-weight:700; letter-spacing:.05em;
+  border:1px solid rgba(255,255,255,.25);
+  padding:10px 16px; border-radius:8px; cursor:pointer;
+  transition: background .15s ease, transform .12s ease;
+}
+.tabs label:hover{ transform: translateY(-1px); }
+#tab-exp:checked + label{ background:#fff; color:#0e1012; }
+#tab-edu:checked + label{ background:#fff; color:#0e1012; }
+
+/* Layout */
+.tl{ position:relative; width:min(900px, 92%); margin:0 auto; }
+.tl__line{
+  position:absolute; left:50%; top:0; bottom:0; width:3px;
+  background:rgba(255,255,255,.25); transform:translateX(-50%);
+  border-radius:2px;
+}
+.tl__panel{ display:none; }
+#tab-exp:checked ~ .tl [data-panel="exp"]{ display:block; }
+#tab-edu:checked ~ .tl [data-panel="edu"]{ display:block; }
+
+/* Items */
+.tl__item{
+  display:grid; grid-template-columns: 1fr 16px 1fr;
+  gap:18px; align-items:flex-start; margin:36px 0;
+}
+.tl__date{ text-align:right; color:rgba(255,255,255,.85); font-size:14px; }
+.tl__dot{
+  width:12px; height:12px; border-radius:50%;
+  background:#fff; box-shadow:0 0 0 4px rgba(255,255,255,.18);
+  margin:6px auto 0;
+}
+.tl__content{
+  background: rgba(0,0,0,.25);
+  border:1px solid rgba(255,255,255,.22);
+  border-radius:12px; padding:12px 14px;
+}
+.tl__org{ margin:0 0 4px; color:#fff; font-weight:900; letter-spacing:.02em; }
+.tl__role{ margin:0 0 4px; color:#d5e1e6; font-weight:700; font-size:14px; }
+.tl__loc{ margin:0 0 6px; color:#c6d4da; font-size:12px; }
+.tl__desc{ margin:0; color:#cfe5ea; font-size:14px; line-height:1.6; }
+
+/* Responsive */
+@media (max-width: 760px){
+  .tl__item{ grid-template-columns: 1fr; }
+  .tl__date{ text-align:left; }
+  .tl__line{ left:18px; transform:none; }      /* optional: keep center if you prefer */
+  .tl__dot{ margin-left:9px; }
+}
