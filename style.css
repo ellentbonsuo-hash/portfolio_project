@@ -38,7 +38,7 @@ body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial
   overflow:hidden;
   border: 1px solid #14b8a6;          
   box-shadow: 0 16px 40px rgba(0,0,0,.12); 
-  width: 40px;; height: 30px; display: flex;
+  width: 140px;; height: 30px; display: flex;
   object-fit: cover;
   border-radius: 8px;
 }
@@ -195,6 +195,7 @@ body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial
 }
 
 .feature{
+  
   background: #0f1115;                                 /* dark card */
   border: 1px solid #1f2023;                           /* subtle border */
   border-radius: 14px;
@@ -221,10 +222,11 @@ body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial
   border-bottom-right-radius:14px;
 }
 /* this is what makes the icon looks like its highlighting and clickables */
-.feature:hover{
+/* .feature:hover{
   transform: translateY(-3px);
   box-shadow: 0 22px 48px rgba(0,0,0,.38);
-}
+  
+} */
 
 .feature__icon{
   width:44px; height:44px;
